@@ -1,0 +1,19 @@
+{
+  "name": "spypress",
+  "version": "1.0.0",
+  "description": "Server Visualizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spypress/Spypress.git"
+  },
+  "author": "Mark Shin, Anthony Toreson, Ruth, Michelle Herrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spypress/Spypress/issues"
+  },
+  "homepage": "https://github.com/Spypress/Spypress#readme"
+}
