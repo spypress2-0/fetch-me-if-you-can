@@ -1,2 +1,2 @@
-# Expressify
+# Spypress
 Server visualizer
