@@ -39,20 +39,24 @@
     "babel-loader": "^8.0.6",
     "css-loader": "^3.2.0",
     "eslint": "^6.2.1",
+    "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.19.1",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "pg": "^4.4.3",
-    "pg-hstore": "^2.3.2"
+    "webpack-hot-middleware": "^2.25.0"
   },
   "bugs": {
     "url": "https://github.com/Spypress/Spypress/issues"
