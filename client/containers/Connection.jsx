@@ -21,7 +21,7 @@ class Connection extends React.Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
+    console.log('this.props inside componentdidmount', this.props);
     // this.props.socketMessage("HELLO");
     // console.log("component did mount");
     const socket = new WebSocket("ws://localhost:2000");
@@ -31,9 +31,9 @@ class Connection extends React.Component {
       // FileReader turns object blobs back into readable text. 
       const blobReader = new FileReader();
       blobReader.onload = (e) => { 
-        console.log('TARGET', e.target.result);
+        console.log('target inside blobreader.onload', e.target.result);
       }
-      console.log('READ', blobReader.readAsText(event.data));
+      console.log('read as text inside didmount', blobReader.readAsText(event.data));
      ;
       // return this.props.socketMessage(event);
     });

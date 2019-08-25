@@ -10,7 +10,7 @@ const wss = new WebSocket.Server({ port: 2000 });
 wss.on("connection", function connection(ws) {
   // app.use(cookieParser());
   app.use("*", (req, res, next) => {
-    console.log(req.body);
+    console.log('req.body from server.js: ', req.body);
     ws.send(JSON.stringify(req.body));
     next();
   });
