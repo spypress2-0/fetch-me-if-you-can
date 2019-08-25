@@ -18,7 +18,14 @@ wss.on('connection', function connection(ws) {
   app.use(cookieParser());
   
   app.use('*', (req, res, next) => {
-    ws.send(JSON.stringify(req.body));
+    const data = {
+      header: null,
+      cookies: null,
+      body: null,
+    };
+    if(req.body) data.body = req.body;
+
+    ws.send(JSON.stringify(data));
     next();
   });
   // last thing inside here

@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actions';
 
-// const mapStateToProps = ({allMessages}) => {
-//   collection = allMessages.collection;
-// };
+// const mapStateToProps = store => ({
+//   collection: store.collection
+// });
+
 const mapStateToProps = (store) => ({
   messages: store.message,
   collection: store.collection,
@@ -13,7 +14,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    socketMessage: () => dispatch({ type: 'ADD_MESSAGE', payload }),
+    socketMessage: (data) => dispatch(actions.addMessage),
   };
 };
 
@@ -28,7 +29,7 @@ class Connection extends React.Component {
       socket.send('Hello Server');
     });
     socket.addEventListener('message', (event) => {
-      this.props.socketMessage('ADD_MESSAGE', event.data);
+      this.props.socketMessage(event.data);
     });
   }
 
