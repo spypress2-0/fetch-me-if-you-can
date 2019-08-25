@@ -19,7 +19,7 @@ const reducers = (state = initialState, action) => {
   let messageArray;
   switch (action.type) {
     case types.ADD_MESSAGE:
-      console.log("reducer case ADD_MESSAGE", action.payload);
+      console.log('Payload:', action.payload);
       const messageData = action.payload;
       messageArray = state.messageArray.slice();
       messageArray.push(messageData);

@@ -5,7 +5,7 @@ import Message from "../components/Message.jsx";
 
 const mapStateToProps = store => ({
   // messages was plural, changed to message
-  message: store.messageArray
+  messageArr: store.messageArray
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,25 +21,24 @@ class Connection extends React.Component {
   }
 
   componentDidMount() {
-    console.log('this.props inside componentdidmount', this.props);
-    // this.props.socketMessage("HELLO");
-    // console.log("component did mount");
     const socket = new WebSocket("ws://localhost:2000");
 
     socket.addEventListener ('message', (event) => {
-      // console.log("INSIDE SOCKET METHOD", this.props);
-      // FileReader turns object blobs back into readable text. 
-      console.log('event inside', event.data);
-      // return this.props.socketMessage(event);
+      console.log('inside eventlistener')
+      this.props.socketMessage(JSON.parse(event.data));
     });
   }
   render() {
-    const divBlobArr = [];
-    for (let i = 0; i < this.props.message.length; i += 1) {
-      divBlobArr.push(<Message key={i} message={this.props.message[i]} />);
-    }
+    const information = [];
+    const { messageArr } = this.props
+    messageArr.forEach((el, index) => {
+      information.push(<Message key={`${el}` + index } info={el}/>);
+    })
+    // for (let i = 0; i < this.props.message.length; i += 1) {
+    //   divBlobArr.push(<Message key={i} message={this.props.message[i]} />);
+    // }
     // return <div>{this.props.message}</div>;
-    return <div>{divBlobArr}</div>;
+    return <div id="msgWrapper">{information}</div>;
   }
 }
 
