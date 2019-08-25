@@ -10,17 +10,16 @@ wss.on("connection", function connection(ws) {
   app.use(express.json());
   app.use(cookieParser());
   app.use("*", (req, res, next) => {
-    // const data = {
-    //   header: null,
-    //   cookies: null,
-    //   body: null, 
-    // }
-    console.log('server.js file', req.body);
-    // if (!res.headersSent) data.header = 'Headers not sent';
-    // if (!req.cookies) data.cookies = 'There are no cookies';
-    // if (req.body) data.body = req.body;
-    ws.send(JSON.stringify(req.body));
-    res.send();
+    const data = {
+      header: null,
+      cookies: null,
+      body: { 'hello' : 'world' }
+    };
+    // console.log('server.js file', req.body);
+    if (!res.headersSent) data.header = 'Headers not sent';
+    if (!req.cookies) data.cookies = 'There are no cookies';
+    if (req.body) data.body = req.body;
+    ws.send(JSON.stringify(data));
   });
 });
 
