@@ -1,21 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actions from '../actions/actions';
+import React from "react";
+import { connect } from "react-redux";
+import * as actions from "../actions/actions";
+import Message from "../components/Message.jsx";
 
-// const mapStateToProps = ({allMessages}) => {
-//   collection = allMessages.collection;
-// };
-const mapStateToProps = (store) => ({
-  messages: store.message,
-  collection: store.collection,
+const mapStateToProps = store => ({
+  // messages was plural, changed to message
+  message: store.messageArray
 });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    socketMessage: () => dispatch({ type: 'ADD_MESSAGE', payload }),
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  // return {
+  socketMessage: data => dispatch(actions.addMessage(data))
+  // }
+  // missing outer open/close parens, added that in, see mapStateToProps to see how it needs the open parens
+});
 
 class Connection extends React.Component {
   constructor(props) {
@@ -23,21 +21,34 @@ class Connection extends React.Component {
   }
 
   componentDidMount() {
-    const socket = new WebSocket('ws://localhost:2000');
-    socket.addEventListener('open', (event) => {
-      socket.send('Hello Server');
-    });
-    socket.addEventListener('message', (event) => {
-      this.props.socketMessage('ADD_MESSAGE', event.data);
+    console.log(this.props);
+    // this.props.socketMessage("HELLO");
+    // console.log("component did mount");
+    const socket = new WebSocket("ws://localhost:2000");
+
+    socket.addEventListener ('message', (event) => {
+      // console.log("INSIDE SOCKET METHOD", this.props);
+      // FileReader turns object blobs back into readable text. 
+      const blobReader = new FileReader();
+      blobReader.onload = (e) => { 
+        console.log('TARGET', e.target.result);
+      }
+      console.log('READ', blobReader.readAsText(event.data));
+     ;
+      // return this.props.socketMessage(event);
     });
   }
-
   render() {
-    return <div>{this.props.message}</div>;
+    const divBlobArr = [];
+    for (let i = 0; i < this.props.message.length; i += 1) {
+      divBlobArr.push(<Message key={i} message={this.props.message[i]} />);
+    }
+    // return <div>{this.props.message}</div>;
+    return <div>{divBlobArr}</div>;
   }
 }
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Connection);

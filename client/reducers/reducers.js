@@ -7,23 +7,29 @@
  * ************************************
  */
 
-import * as types from '../actions/actionTypes';
+import * as types from "../actions/actionTypes";
 
 const initialState = {
-  collection: [],
-  message: {},
+  messageArray: []
+  // need a way to give a unique key if we have messages to be an object
+  // message: {}
 };
 
-const parseMessage = (state = initialState, action) => {
-  switch (action) {
+const reducers = (state = initialState, action) => {
+  let messageArray;
+  switch (action.type) {
     case types.ADD_MESSAGE:
+      console.log("PAY FUCKING LOAD", action.payload);
+      const messageData = action.payload;
+      messageArray = state.messageArray.slice();
+      messageArray.push(messageData);
       return {
         ...state,
-        currentMessage: action.payload,
+        messageArray
       };
     default:
       return state;
   }
 };
 
-export default parseMessage;
+export default reducers;

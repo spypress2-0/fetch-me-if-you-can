@@ -7,11 +7,11 @@
  * ************************************
  */
 
-import * as types from './actionTypes';
+import * as types from "./actionTypes";
 
-export const addMessage = (message) => ({
+export const addMessage = message => ({
   type: types.ADD_MESSAGE,
-  payload: message,
+  payload: message
 });
 
 // export const toCollection = (message) => ({
