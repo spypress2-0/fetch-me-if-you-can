@@ -3,11 +3,14 @@ import React from "react";
 const Message = props => {
   return (
     <div id="msgBox">
-      <pre className="header"><h2>Request Type: {props.info.type} </h2></pre>
+      <span id="header"><h2>Request Type: {props.info.type} </h2></span>
       <div id="reqDiv">
-        <pre className="child-header">Header: {JSON.stringify(props.info.header, undefined, 2)}</pre>
-        <pre className="child-body"><h3>Body: {JSON.stringify(props.info.body, undefined, 2)}</h3></pre>
-        <pre className="child-cookies">Cookies: {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
+        <div><h3>Header</h3></div>
+        <pre id="child-header"><h3> {JSON.stringify(props.info.header, undefined, 2)}</h3></pre>
+        <div><h3>Body</h3></div>
+        <pre id="child-body"><h3> {JSON.stringify(props.info.body, undefined, 2)}</h3></pre>
+        <div><h3>Cookies</h3></div>
+        <pre id="child-cookies"> {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
       </div>
     </div>
   )
