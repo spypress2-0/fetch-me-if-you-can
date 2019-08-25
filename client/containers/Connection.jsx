@@ -22,20 +22,11 @@ class Connection extends React.Component {
 
   componentDidMount() {
     console.log(this.props);
-    // this.props.socketMessage("HELLO");
-    // console.log("component did mount");
     const socket = new WebSocket("ws://localhost:2000");
 
     socket.addEventListener ('message', (event) => {
-      // console.log("INSIDE SOCKET METHOD", this.props);
-      // FileReader turns object blobs back into readable text. 
-      const blobReader = new FileReader();
-      blobReader.onload = (e) => { 
-        console.log('TARGET', e.target.result);
-      }
-      console.log('READ', blobReader.readAsText(event.data));
-     ;
-      // return this.props.socketMessage(event);
+      console.log('inside eventlistener')
+      this.props.socketMessage(JSON.parse(event.data));
     });
   }
   render() {
