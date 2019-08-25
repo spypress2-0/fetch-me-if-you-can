@@ -29,12 +29,7 @@ class Connection extends React.Component {
     socket.addEventListener ('message', (event) => {
       // console.log("INSIDE SOCKET METHOD", this.props);
       // FileReader turns object blobs back into readable text. 
-      const blobReader = new FileReader();
-      blobReader.onload = (e) => { 
-        console.log('target inside blobreader.onload', e.target.result);
-      }
-      console.log('read as text inside didmount', blobReader.readAsText(event.data));
-     ;
+      console.log('event inside', event.data);
       // return this.props.socketMessage(event);
     });
   }

@@ -6,8 +6,8 @@ const path = require("path");
 const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 2000 });
 
-// app.use(express.json());
 wss.on("connection", function connection(ws) {
+  app.use(express.json());
   // app.use(cookieParser());
   app.use("*", (req, res, next) => {
     console.log('req.body from server.js: ', req.body);
