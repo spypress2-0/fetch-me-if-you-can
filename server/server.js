@@ -34,15 +34,12 @@ socket.init().then(ws => {
   });
 });
 
-
-
 //Listen on all Requests
 // app.use('/build', express.static(path.join(__dirname, '../build')))
 
 // app.get('/prod', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../public/index.html'));
 // })
-
 
 app.listen(3000);
 
