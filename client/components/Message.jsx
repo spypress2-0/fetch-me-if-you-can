@@ -38,17 +38,31 @@ const Message = props => {
     headArr.push(<p key={`${key}` + index} className="header-data">{key} = {hVArr[index]}</p>);
   });
 
-  //BODY
-  const bodyArr = []; //Initalize empty array to render
-  const bKArr = Object.keys(props.info.body); // Keys of Body
-  const bVArr = Object.values(props.info.body); // Values of Body
-  
-  //loop through each key;
-  bKArr.forEach((key, index) => {
-    //push into initialize empty array a P TAG that seperates keys and values into a sentence w/ unique keys;
-    bodyArr.push(<p key={`${key}` + index} className="body-data">{key} = {bVArr[index]}</p>);
-  });
+  const flattenObject = (data) => {
+    const toReturn = {};
+    
+    for (let prop in data) {
+      if (!data.hasOwnProperty(prop)) continue;
+      if (typeof data[prop] === 'object') {
+        const flatObj = flattenObject(data[prop]);
+        for (let prop in flatObj) {
+          if (!flatObj.hasOwnProperty(prop)) continue;
+          toReturn[prop] = flatObj[prop];
+        }
+      } 
+      else toReturn[prop] = data[prop];
+      }
+    return toReturn;
+  }
 
+  const bodyArr = [];
+  const newObj = flattenObject(props.info.body);
+  const bKArr = Object.keys(newObj);
+  const bVArr = Object.values(newObj);
+
+  bKArr.forEach((key, index) => {
+    bodyArr.push(<p key={`${key}` + index} className="header-data">{key} = {bVArr[index]}</p>)
+  })
   /*
     Here we have a main message container;
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
