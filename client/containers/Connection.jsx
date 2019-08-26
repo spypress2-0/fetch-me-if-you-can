@@ -23,10 +23,10 @@ class Connection extends Component {
   //Lifecycle method to connect WebSocket with front-end;
   componentDidMount() {
     //Connect to port 2000 WebSocket;
-    const socket = new WebSocket("ws://localhost:2000");
+    const socket = new WebSocket("ws://localhost:8080");
 
     //Added eventListener to listen for any data coming inside websocket server;
-    socket.addEventListener ('message', (event) => {
+    socket.addEventListener('message', (event) => {
       //Send data received to reducer function;
       this.props.socketMessage(JSON.parse(event.data));
     });
@@ -41,7 +41,7 @@ class Connection extends Component {
     //Loop through each element inside messageArr (which is an object and send it down to child components);
     messageArr.forEach((el, index) => {
       //el = data object we pushed in. => send it down into the child component as a property/attribute;
-      infoHolder.push(<Message key={`${el}` + index } info={el}/>);
+      infoHolder.push(<Message key={`${el}` + index} info={el} />);
     })
     /*
     We want every new request to be on the top when we render, 
@@ -54,4 +54,4 @@ class Connection extends Component {
 }
 
 //Needed to use mapStateToProps & mapDispatchToProps then export Main Container;
-export default connect(mapStateToProps,mapDispatchToProps)(Connection);
+export default connect(mapStateToProps, mapDispatchToProps)(Connection);
