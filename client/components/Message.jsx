@@ -38,22 +38,18 @@ const Message = props => {
     headArr.push(<p key={`${key}` + index} className="header-data">{key} = {hVArr[index]}</p>);
   });
 
-  const flattenObject = (data) => {
-    const toReturn = {};
-    
-    for (let prop in data) {
-      if (!data.hasOwnProperty(prop)) continue;
-      if (typeof data[prop] === 'object') {
-        const flatObj = flattenObject(data[prop]);
-        for (let prop in flatObj) {
-          if (!flatObj.hasOwnProperty(prop)) continue;
-          toReturn[prop] = flatObj[prop];
-        }
-      } 
-      else toReturn[prop] = data[prop];
-      }
-    return toReturn;
-  }
+  //BODY
+  //Need to parse through due to nested objects and arrays inside body object.
+  const flattenObject = object => {
+    return Object.assign( {}, ...function _flatten( objectBit, path = '' ) {  
+      return [].concat(                                                       
+        ...Object.keys( objectBit ).map(
+          key => typeof objectBit[ key ] === 'object' ? _flatten( objectBit[ key ], path + '+' ) : 
+          ( { [ `${ path }+ ${ key }` ]: objectBit[ key ] } )
+          )
+      )
+    }( object ) );
+  };
 
   const bodyArr = [];
   const newObj = flattenObject(props.info.body);
@@ -61,8 +57,16 @@ const Message = props => {
   const bVArr = Object.values(newObj);
 
   bKArr.forEach((key, index) => {
-    bodyArr.push(<p key={`${key}` + index} className="header-data">{key} = {bVArr[index]}</p>)
+    bodyArr.push(<p key={`${key}` + index} className="body-data">{key} = {bVArr[index]}</p>);
   })
+  //COOKIES
+  const cookieArr = [];
+  const cKArr = Object.keys(props.info.cookies);
+  const cVArr = Object.values(props.info.cookies);
+  cKArr.forEach((key, index) => {
+    cookieArr.push(<p key={`${key}` + index} className="cookie-data">Name: {key} | Value: {cVArr[index]}</p>);
+  });
+
   /*
     Here we have a main message container;
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
@@ -85,7 +89,7 @@ const Message = props => {
         </pre>
       </div>
       <div className="cookies-info">
-        <pre>Cookies: {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
+        <pre>{cookieArr}</pre>
       </div>
     </div>
   )
