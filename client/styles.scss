@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+
+$background: #F3EFF7;
+$pri-border-color: #5D2B82;
+$sec-border-color: #764699;
+$sec-background: #DFCBEC;
+$title-background: #F8C033;
+$footer-background: #C7ACDC;
+
+body {
+  margin: 0;
+  background-color: $background;
+}
+
+.message-container {
+  display: grid;
+  grid-template-areas: "mt mt"
+                       "hi bi"
+                       "ci ci";
+  border: 5px solid $pri-border-color;
+  border-radius: 10px;
+  margin: 5rem 15rem;
+  height: 400px;
+  pre {
+    font-family: 'Ubuntu', sans-serif;
+  }
+}
+
+.method-type {
+  grid-area: mt;
+  text-align: center;
+  border-bottom: 5px solid $footer-background;
+  background-color: $title-background;
+}
+
+.header-info {
+  grid-area: hi;
+  border-right: 5px solid $footer-background;
+  background-color: $sec-background;
+  max-height: 100%;
+  overflow-y: scroll;
+  h3 {
+    margin-left: 1rem;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.body-info {
+  grid-area: bi;
+  background-color: $sec-background;
+  max-height: 100%;
+  overflow-y: scroll;
+  h3 {
+    margin-left: 1rem;
+  }
+  p {
+    text-align: center;
+  }
+}
+
+.cookies-info {
+  grid-area: ci;
+  background-color: $footer-background;
+
+  pre {
+    margin-left: 1rem;
+  }
+  p {
+    color: $background;
+  }
+}
