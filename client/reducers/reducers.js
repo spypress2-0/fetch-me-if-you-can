@@ -7,26 +7,38 @@
  * ************************************
  */
 
+//Getting actions from Actions folder;
 import * as types from "../actions/actionTypes";
 
+//Setting initial state that we're going to use;
 const initialState = {
-  messageArray: []
-  // need a way to give a unique key if we have messages to be an object
-  // message: {}
+  messageArray: [],
 };
 
+//Reducer function, (where the magic happens);
 const reducers = (state = initialState, action) => {
+  //initalize a variable called messageArray; (Scope of state will not effect this initialization.);
   let messageArray;
+  
+  //switch case statements;
+
+  //IF ACTION.TYPE === ADD_MESSAGE;
   switch (action.type) {
     case types.ADD_MESSAGE:
-      console.log('Payload:', action.payload);
+      //Setting Payload as a variable for easier use;
       const messageData = action.payload;
+      //Create shallow copy of the array inside state copy & set it to initialize variable we made earlier;
       messageArray = state.messageArray.slice();
+      //push payload which is an OBJECT into shallow copied array;
       messageArray.push(messageData);
+
+      //return new state copy with our new array inside;
       return {
         ...state,
         messageArray
       };
+    
+    //return default state;
     default:
       return state;
   }

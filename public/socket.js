@@ -1,17 +1,14 @@
+//Middle WebSocket connection for server and client;
+
+//Establish new server on same port as server;
 const socket = new WebSocket("ws://localhost:2000/");
 
+//Listening for when server is opened
 socket.addEventListener('open', (event) => {
   socket.send('Hello Server');
 });
 
+//Listening for any "message/data" that comes through the socket;
 socket.addEventListener('message', (event) => {
-  //* potentially store a variable to send to front end?
-  // let variableHoldingEventData = event.data;
-  // console.log('Socket Event Data: ', variableHoldingEventData);
   console.log('Socket Event Data: ', JSON.parse(event.data));
 });
-
-// document.querySelector('#button').addEventListener('click', () => {
-//   console.log('clicked');
-//   socket.send('Clicked');
-// })

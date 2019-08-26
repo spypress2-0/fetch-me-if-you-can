@@ -1,19 +1,11 @@
 import React, { Component } from "react";
+//Require Main Container to render;
 import Connection from "./containers/Connection.jsx";
-// import socket from './actions/websockets';
 
+//Main render for main container;
 class App extends Component {
-  // THIS IS A PRESENTATIONAL COMPONENT.
-  // DO WE EVEN NEED THIS IF WERE MANAGING STATE IN THE STORE??????
-  // constructor(props) {
-  //   super(props);
-  // }
   render() {
-    return (
-      <div id="outerBox">
-        <Connection />
-      </div>
-    );
+    return (<Connection />)
   }
 }
 
