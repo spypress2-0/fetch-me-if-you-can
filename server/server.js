@@ -2,10 +2,9 @@ const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser');
 const WebSocket = require("ws");
-
+const path = require('path');
 //Websocket Connection to port 2000;
 const wss = new WebSocket.Server({ port: 2000 });
-
 
 //Event listener for WebSocket Connection.
 wss.on("connection", function connection(ws) { 
@@ -13,7 +12,6 @@ wss.on("connection", function connection(ws) {
   //ON Connection parse all requests & cookies
   app.use(express.json());
   app.use(cookieParser());
-
   //Listen on all Requests
   app.use("*", (req, res) => {
 
@@ -38,6 +36,12 @@ wss.on("connection", function connection(ws) {
     res.send('Successfully Connected with WebSocket Server');
   });
 });
+
+app.use('/build', express.static(path.join(__dirname, '../build')))
+
+app.get('/prod', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+})
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...");
