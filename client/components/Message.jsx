@@ -39,14 +39,32 @@ const Message = props => {
   });
 
   //BODY
-  const bodyArr = []; //Initalize empty array to render
-  const bKArr = Object.keys(props.info.body); // Keys of Body
-  const bVArr = Object.values(props.info.body); // Values of Body
-  
-  //loop through each key;
+  //Need to parse through due to nested objects and arrays inside body object.
+  const flattenObject = object => {
+    return Object.assign( {}, ...function _flatten( objectBit, path = '' ) {  
+      return [].concat(                                                       
+        ...Object.keys( objectBit ).map(
+          key => typeof objectBit[ key ] === 'object' ? _flatten( objectBit[ key ], path + '+' ) : 
+          ( { [ `${ path }+ ${ key }` ]: objectBit[ key ] } )
+          )
+      )
+    }( object ) );
+  };
+
+  const bodyArr = [];
+  const newObj = flattenObject(props.info.body);
+  const bKArr = Object.keys(newObj);
+  const bVArr = Object.values(newObj);
+
   bKArr.forEach((key, index) => {
-    //push into initialize empty array a P TAG that seperates keys and values into a sentence w/ unique keys;
     bodyArr.push(<p key={`${key}` + index} className="body-data">{key} = {bVArr[index]}</p>);
+  })
+  //COOKIES
+  const cookieArr = [];
+  const cKArr = Object.keys(props.info.cookies);
+  const cVArr = Object.values(props.info.cookies);
+  cKArr.forEach((key, index) => {
+    cookieArr.push(<p key={`${key}` + index} className="cookie-data">Name: {key} | Value: {cVArr[index]}</p>);
   });
 
   /*
@@ -71,7 +89,7 @@ const Message = props => {
         </pre>
       </div>
       <div className="cookies-info">
-        <pre>Cookies: {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
+        <pre>{cookieArr}</pre>
       </div>
     </div>
   )
