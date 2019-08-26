@@ -54,6 +54,7 @@ const Message = props => {
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
   */
   return (
+<<<<<<< HEAD
     <div className="message-container">
       <div className="method-type">
         <pre>{props.info.type} Request</pre>
@@ -72,6 +73,17 @@ const Message = props => {
       </div>
       <div className="cookies-info">
         <pre>Cookies: {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
+=======
+    <div id="msgBox">
+      <span id="header"><h2>Request Type: {props.info.type} </h2></span>
+      <div id="reqDiv">
+        <div><h3>Header</h3></div>
+        <pre id="child-header"><h3> {JSON.stringify(props.info.header, undefined, 2)}</h3></pre>
+        <div><h3>Body</h3></div>
+        <pre id="child-body"><h3> {JSON.stringify(props.info.body, undefined, 2)}</h3></pre>
+        <div><h3>Cookies</h3></div>
+        <pre id="child-cookies"> {JSON.stringify(props.info.cookies, undefined, 2)}</pre>
+>>>>>>> db602a449b2904595a8921f8775bc998858a5a25
       </div>
     </div>
   )

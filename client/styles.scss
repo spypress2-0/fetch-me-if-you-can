@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
 
+<<<<<<< HEAD
 $background: #F3EFF7;
 $pri-border-color: #5D2B82;
 $sec-border-color: #764699;
@@ -41,6 +42,53 @@ body {
   }
   p {
     text-align: center;
+=======
+$beige: #c1b1ab;
+$mint: #c5e3e2;
+$peach: #f7c8b7;
+
+body {
+  background-color: $beige;
+  font-family: "Lexend Deca", sans-serif;
+
+  #msgWrapper {
+    display: flex;
+    flex-direction: column-reverse;
+    // justify-content: center;
+
+    #msgBox {
+      display: flex;
+      flex-direction: column;
+      // align-content: center;
+      justify-content: center;
+      min-width: auto;
+      max-width: 75%;
+      border: 2;
+      border-color: black;
+      border-radius: 2px;
+
+      #header {
+        background-color: $peach;
+        border: 1;
+        border-color: black;
+        border-radius: 2px;
+      }
+
+      #reqDiv {
+        display: flex;
+        flex-direction: column;
+        // align-content: center;
+        justify-content: center;
+        overflow-wrap: break-word;
+        background-color: white;
+
+        #pre {
+          overflow-wrap: break-word;
+          font-family: "Source Code Pro", monospace;
+        }
+      }
+    }
+>>>>>>> db602a449b2904595a8921f8775bc998858a5a25
   }
 }
 
