@@ -3,7 +3,7 @@
 
 ## TL;DR 
 ### What is SpyPress?
-SpyPress is a lightweight, open source library designed to help developers visual requests and responses from the server.
+SpyPress is a lightweight, open source library designed to help developers visual requests from the server.
 
 ## SpyPress - Extended Cut
 ### The Problem
