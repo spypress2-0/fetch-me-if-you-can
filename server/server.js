@@ -3,17 +3,19 @@ const app = express();
 const cookieParser = require('cookie-parser');
 const WebSocket = require("ws");
 const path = require('path');
+
+// We have to open up the Websocket connection and place ALL routes within it.
 //Websocket Connection to port 2000;
 const wss = new WebSocket.Server({ port: 2000 });
 
 //Event listener for WebSocket Connection.
-wss.on("connection", function connection(ws) { 
+wss.on("connection", function connection(ws) {
 
   //ON Connection parse all requests & cookies
   app.use(express.json());
   app.use(cookieParser());
   //Listen on all Requests
-  app.use("*", (req, res) => {
+  app.use("*", (req, res, next) => {
 
     //Data we're going to send to the establish WebSocket Server for the Front-end to grab;
     //All set as null until we define the data coming in.
@@ -21,7 +23,7 @@ wss.on("connection", function connection(ws) {
       header: null,
       cookies: null,
       body: null,
-      type:null
+      type: null
     };
 
     //Defining any requests that comes in such as Methods, Headers, Cookies & Body.
@@ -33,15 +35,19 @@ wss.on("connection", function connection(ws) {
     //Sending data object to WebSocket Server for Front-End to grab.
     ws.send(JSON.stringify(data));
     //Connection Confirmation.
-    res.send('Successfully Connected with WebSocket Server');
+
+    next();
   });
+
+  // Place routes for your server here!
+
+
+
+
+
+  app.use('*', (req, res, next) => res.send('Testing With SpyPress!'))
 });
 
-app.use('/build', express.static(path.join(__dirname, '../build')))
-
-app.get('/prod', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
-})
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...");
