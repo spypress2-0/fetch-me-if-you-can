@@ -30,6 +30,7 @@ wss.on("connection", function connection(ws) {
     !req.cookies ? data.cookies = 'There are no cookies' : data.cookies = req.cookies;
     !req.body ? data.body = 'There is no body' : data.body = req.body;
 
+    console.log('req => => => => => ', req)
     //Sending data object to WebSocket Server for Front-End to grab.
     ws.send(JSON.stringify(data));
     //Connection Confirmation.
@@ -44,6 +45,11 @@ app.use('/build', express.static(path.join(__dirname, '../build')))
 app.get('/prod', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 })
+
+app.post('/prok', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+})
+
 
 app.listen(3000, () => {
   console.log("Listening on port 3000...");

@@ -23,6 +23,7 @@ class Connection extends Component {
   //Lifecycle method to connect WebSocket with front-end;
   componentDidMount() {
     //Connect to port 2000 WebSocket;
+    console.log('Inside ComponentDid mount')
     const socket = new WebSocket("ws://localhost:2000");
 
     //Added eventListener to listen for any data coming inside websocket server;
