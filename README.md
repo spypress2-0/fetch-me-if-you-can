@@ -21,3 +21,5 @@ Spypress is meant for developers working with lightweight server-side frameworks
 
 ## What's next?
 - Implement a database to store each session in history for review at another time.
+
+SpyPress is being iterated - Paul
