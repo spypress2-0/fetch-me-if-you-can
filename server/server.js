@@ -1,8 +1,8 @@
+const path = require('path');
 const express = require("express");
 const app = express();
 const cookieParser = require('cookie-parser');
 const WebSocket = require("ws");
-const path = require('path');
 //Websocket Connection to port 2000;
 const wss = new WebSocket.Server({ port: 2000 });
 
@@ -36,7 +36,6 @@ wss.on("connection", function connection(ws) {
     next();
   });
   //[INSERT YOUR ROUTES HERE];
-  // TEST COMMENT?
 });
 
 //Running NPM START. Need to go to localhost:3000/prod to view page.
@@ -49,3 +48,4 @@ app.get('/prod', (req, res) => {
 app.listen(3000, () => {
   console.log("Listening on port 3000...");
 });
+

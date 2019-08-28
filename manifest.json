@@ -1,0 +1,17 @@
+  {
+    "name": "Fetch Me If You Can",
+    "version": "1.0",
+    "description": "Visualizes your server activity",
+    "background": {
+      "scripts": ["build/bundle.js"],
+      "persistent": true
+    },
+    "browser_action": {
+      "default_popup": "public/index.html",
+      "default_title": "Fetch Me If You Can: Visualize Your Server"
+    },
+    "permissions": ["activeTab"],
+    "manifest_version": 2
+  }
+
+  
