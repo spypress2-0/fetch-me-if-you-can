@@ -6,10 +6,16 @@
       "scripts": ["build/bundle.js"],
       "persistent": true
     },
+    "icons": {
+      "16": "output-onlinepngtools_1_3_16x16.png",
+      "64": "output-onlinepngtools_1_1_64x64.png",
+      "128":"output-onlinepngtools_1_128x128.png"
+    },
     "browser_action": {
       "default_popup": "public/index.html",
       "default_title": "Fetch Me If You Can: Visualize Your Server"
     },
+    "web_accessible_resources": ["client/styles.scss"],
     "permissions": ["activeTab"],
     "manifest_version": 2
   }

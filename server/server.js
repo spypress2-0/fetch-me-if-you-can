@@ -14,7 +14,6 @@ wss.on("connection", function connection(ws) {
   app.use(cookieParser());
   //Listen on all Requests
   app.use("*", (req, res, next) => {
-
     //Data we're going to send to the establish WebSocket Server for the Front-end to grab;
     //All set as null until we define the data coming in.
     const data = {
@@ -31,11 +30,13 @@ wss.on("connection", function connection(ws) {
     !req.body ? data.body = 'There is no body' : data.body = req.body;
 
     //Sending data object to WebSocket Server for Front-End to grab.
+    // res.status(200);
     ws.send(JSON.stringify(data));
     //Connection Confirmation.
     next();
   });
   //[INSERT YOUR ROUTES HERE];
+
 });
 
 //Running NPM START. Need to go to localhost:3000/prod to view page.
