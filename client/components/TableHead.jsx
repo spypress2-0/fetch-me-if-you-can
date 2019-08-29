@@ -2,7 +2,7 @@ import React from 'react';
 
 const TableHead = () => {
   return(
-    <table border='1'>
+    <table border='1' id='table-head'>
       <thead>
         <tr>
           <th>Request Type</th>

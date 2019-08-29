@@ -97,7 +97,7 @@ const Message = props => {
 
   // const randomNumber = Math.floor(Math.random()*10)
   return (
-    <table border = '1'>
+    <table border = '1' id='table-body'>
       <tbody>
         <tr>
           <td>{newRow.requestType}</td>
