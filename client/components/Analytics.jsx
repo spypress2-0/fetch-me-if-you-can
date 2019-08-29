@@ -37,7 +37,7 @@ class Analytics extends Component {
     render() {
         return (
             <div>
-                <div><canvas id="myChart" width="200" height="200"></canvas></div>
+                <div><canvas id="myChart"></canvas></div>
             </div>
         )
     }
