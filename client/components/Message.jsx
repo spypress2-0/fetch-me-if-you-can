@@ -90,18 +90,12 @@ const Message = props => {
   const statusArr = [
     [200, "OK"],
     [200, "OK"],
-    [200, "OK"],
-    [400, "Bad Request"],
-    [200, "OK"],
-    [200, "OK"],
     [404, "Not Found"],
     [200, "OK"],
-    [200, "OK"],
-    [500, "Internal Server Error"],
+    [200, "OK"]
   ]
 
-  const randomNumber = Math.floor(Math.random()*10)
-
+  // const randomNumber = Math.floor(Math.random()*10)
   return (
     <table border = '1'>
       <tbody>
@@ -109,8 +103,8 @@ const Message = props => {
           <td>{newRow.requestType}</td>
           <td>{newRow.contentLength}</td>
           <td>{newRow.originalUrl}</td>
-          <td>{statusArr[randomNumber][0]}</td>
-          <td>{statusArr[randomNumber][1]}</td>
+          <td>{statusArr[props.number][0]}</td>
+          <td>{statusArr[props.number][1]}</td>
         </tr>
       </tbody>
     </table>
