@@ -87,7 +87,7 @@ const Message = props => {
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
   */
   return (
-    <table className="ui celled table">
+    <table border = '1'>
       <tbody>
         <tr>
           <td>{newRow.requestType}</td>
