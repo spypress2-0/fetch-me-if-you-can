@@ -103,7 +103,7 @@ const Message = props => {
   const randomNumber = Math.floor(Math.random()*10)
 
   return (
-    <table className="ui celled table">
+    <table border = '1'>
       <tbody>
         <tr>
           <td>{newRow.requestType}</td>

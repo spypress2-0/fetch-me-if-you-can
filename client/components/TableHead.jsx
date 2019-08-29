@@ -2,7 +2,7 @@ import React from 'react';
 
 const TableHead = () => {
   return(
-    <table className="ui celled table">
+    <table border='1'>
       <thead>
         <tr>
           <th>Request Type</th>
