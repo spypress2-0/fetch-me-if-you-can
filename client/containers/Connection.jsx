@@ -75,10 +75,16 @@ class Connection extends Component {
     const view = handleView(this.props);
     return (
       <div>
-        <img src="../Webp.net-resizeimage.png" />
+        <img src="../output-onlinepngtools_1_1_64x64.png" />
         <div id="switch-container">
-          <button onClick={event => handleClick(event, this.props, "table")}>Table View</button>
-          <button onClick={event => handleClick(event, this.props, "analytics")}>Analytics</button>
+          <button onClick={event => handleClick(event, this.props, "table")}>
+            Table View
+          </button>
+          <button
+            onClick={event => handleClick(event, this.props, "analytics")}
+          >
+            Analytics
+          </button>
         </div>
         <div id="title-container">
           <h1 id="title">Fetch Me If You Can</h1>
