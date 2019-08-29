@@ -20,7 +20,8 @@ wss.on("connection", function connection(ws) {
       header: null,
       cookies: null,
       body: null,
-      type:null
+      type:null,
+      originalUrl: null
     };
 
     //Defining any requests that comes in such as Methods, Headers, Cookies & Body.
@@ -28,7 +29,7 @@ wss.on("connection", function connection(ws) {
     !req.headers ? data.header = 'Headers not sent' : data.header = req.headers;
     !req.cookies ? data.cookies = 'There are no cookies' : data.cookies = req.cookies;
     !req.body ? data.body = 'There is no body' : data.body = req.body;
-
+    !req.originalUrl ? data.originalUrl = 'There is no original URL' : data.originalUrl = req.originalUrl;
     //Sending data object to WebSocket Server for Front-End to grab.
     // res.status(200);
     ws.send(JSON.stringify(data));
