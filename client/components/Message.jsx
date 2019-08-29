@@ -27,6 +27,12 @@ import React from "react";
 */
 
 const Message = props => {
+  /*
+    We need to grab what we need:
+      We care about content.length, we care about 
+  */
+
+
   //HEADER
   const headArr = []; //Initalize empty array to render
   const headerKeysArr = Object.keys(props.info.header); // Keys of Header
@@ -54,8 +60,6 @@ const Message = props => {
     }( object ) );
   };
   
-
-
   const bodyArr = [];
   const newObj = flattenObject(props.info.body);
   const bodyKeysArr = Object.keys(newObj);

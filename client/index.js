@@ -9,11 +9,15 @@ import './styles.scss'
 //Provides store to component;
 ReactDOM.render(
   <Provider store={store}>
-    <img src="../output-onlinepngtools_1_1_64x64.png" />
-    <button>Table</button>
-    <button>Analytics</button>
-    <h1 id='title'>Fetch Me If You Can</h1>
-    <p id='about'>Your favorite live server visualizer</p>
+    <img src="../Webp.net-resizeimage.png" />
+    <div id="switch-container">
+      <button>Table View</button>
+      <button>Analytics</button>
+    </div>
+    <div id="title-container">
+      <h1 id="title">Fetch Me If You Can</h1>
+      <p id="about">Your favorite live server visualizer</p>
+    </div>
     <App />
   </Provider>,
   document.querySelector("#root")

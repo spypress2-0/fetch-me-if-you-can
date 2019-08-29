@@ -2,5 +2,23 @@ body{
   height: 750px;
   width: 500px;
   overflow-y: auto;
+
+  #switch-container{
+    float: right;
+
+    button{
+      font-size: 14px;
+    }
+  }
+  
+  #title-container{
+    h1{
+      text-align: center;
+    }
+
+    p{
+      text-align: center;
+    }
+  }
 }
 
