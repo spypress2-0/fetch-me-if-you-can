@@ -31,7 +31,6 @@ wss.on("connection", function connection(ws) {
     !req.body ? data.body = 'There is no body' : data.body = req.body;
     !req.originalUrl ? data.originalUrl = 'There is no original URL' : data.originalUrl = req.originalUrl;
     //Sending data object to WebSocket Server for Front-End to grab.
-    // res.status(200);
     ws.send(JSON.stringify(data));
     //Connection Confirmation.
     next();
