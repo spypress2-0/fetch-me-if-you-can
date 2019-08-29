@@ -31,13 +31,12 @@ const handleView = (props) => {
     //Loop through each element inside messageArr (which is an object and send it down to child components);
     messageArr.forEach((el, index) => {
       //el = data object we pushed in. => send it down into the child component as a property/attribute;
-      infoHolder.push(<Message key={`${el}` + index} info={el} />);
+      infoHolder.push(<Message key={`${el}` + index} info={el} number={index} />);
     })
     /*
     We want every new request to be on the top when we render, 
     therefore we want to reverse the array because otherwise every new request will be on the bottom
     */
-    infoHolder.reverse();
     return (
       <div>
         <TableHead />
