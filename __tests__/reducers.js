@@ -29,4 +29,11 @@ describe('Add message reducer', () => {
       expect(message(state, agiction)).toBe(state);
     });
   });
+  describe('clears a message', () => {
+    it('should return the updated state with added messaage', () => {
+      const action = { type: 'ADD_MESSAGE' , payload: {hello: "hello"}};
+      // make a copy of a message
+      expect(message(state, agiction)).toBe(state);
+    });
+  });
 });
