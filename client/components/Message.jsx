@@ -50,16 +50,16 @@ const Message = props => {
   //BODY
   // Need to parse through due to nested objects and arrays inside body object.
   const flattenObject = object => {
-    return Object.assign( {}, ...function _flatten( objectBit, path = '' ) {  
-      return [].concat(                                                       
-        ...Object.keys( objectBit ).map(
-          key => typeof objectBit[ key ] === 'object' ? _flatten( objectBit[ key ], path + '+' ) : 
-          ( { [ `${ path }+ ${ key }` ]: objectBit[ key ] } )
-          )
+    return Object.assign({}, ...function _flatten(objectBit, path = '') {
+      return [].concat(
+        ...Object.keys(objectBit).map(
+          key => typeof objectBit[key] === 'object' ? _flatten(objectBit[key], path + '+') :
+            ({ [`${path}+ ${key}`]: objectBit[key] })
+        )
       )
-    }( object ) );
+    }(object));
   };
-  
+
   const bodyArr = [];
   const newObj = flattenObject(props.info.body);
   const bodyKeysArr = Object.keys(newObj);
@@ -86,8 +86,8 @@ const Message = props => {
         <pre>{props.info.type} Request</pre>
       </div>
       <div className="header-info">
-        <pre> 
-          <h3>Header:</h3> 
+        <pre>
+          <h3>Header:</h3>
           {headArr}
         </pre>
       </div>

@@ -13,17 +13,21 @@ import * as types from "../actions/actionTypes";
 //Setting initial state that we're going to use;
 const initialState = {
   messageArray: [],
+  totalRequests: 0,
+  badRequests: 0,
+  goodRequests: 0,
+  view: "table"
 };
 
 //Reducer function, (where the magic happens);
 const reducers = (state = initialState, action) => {
   //initalize a variable called messageArray; (Scope of state will not effect this initialization.);
   let messageArray;
-  
-  //switch case statements;
+  let view;
+  let totalRequests;
 
-  //IF ACTION.TYPE === ADD_MESSAGE;
   switch (action.type) {
+    //IF ACTION.TYPE === ADD_MESSAGE;
     case types.ADD_MESSAGE:
       //Setting Payload as a variable for easier use;
       const messageData = action.payload;
@@ -31,13 +35,22 @@ const reducers = (state = initialState, action) => {
       messageArray = state.messageArray.slice();
       //push payload which is an OBJECT into shallow copied array;
       messageArray.push(messageData);
+      totalRequests++;
 
       //return new state copy with our new array inside;
       return {
         ...state,
-        messageArray
+        messageArray,
+        totalRequests
       };
-    
+
+    case types.SET_VIEW:
+      view = action.payload;
+      return {
+        ...state,
+        view
+      };
+
     //return default state;
     default:
       return state;
