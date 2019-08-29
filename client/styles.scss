@@ -10,6 +10,18 @@ body{
       font-size: 14px;
     }
   }
+
+  table{
+    max-width: 90%;
+
+    th{
+      text-align: center;
+    }
+
+    td{
+      text-align: center;
+    }
+  }
   
   #title-container{
     h1{
