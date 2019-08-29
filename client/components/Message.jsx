@@ -86,6 +86,22 @@ const Message = props => {
     Here we have a main message container;
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
   */
+
+  const statusArr = [
+    [200, "OK"],
+    [200, "OK"],
+    [200, "OK"],
+    [400, "Bad Request"],
+    [200, "OK"],
+    [200, "OK"],
+    [404, "Not Found"],
+    [200, "OK"],
+    [200, "OK"],
+    [500, "Internal Server Error"],
+  ]
+
+  const randomNumber = Math.floor(Math.random()*10)
+
   return (
     <table className="ui celled table">
       <tbody>
@@ -93,8 +109,8 @@ const Message = props => {
           <td>{newRow.requestType}</td>
           <td>{newRow.contentLength}</td>
           <td>{newRow.originalUrl}</td>
-          <td>{Math.floor(Math.random() * (500 - 200) + 200)}</td>
-          <td></td>
+          <td>{statusArr[randomNumber][0]}</td>
+          <td>{statusArr[randomNumber][1]}</td>
         </tr>
       </tbody>
     </table>
