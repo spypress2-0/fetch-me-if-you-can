@@ -7,7 +7,7 @@ const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 2000 });
 
 //Event listener for WebSocket Connection.
-wss.on("connection", function connection(ws) { 
+wss.on("connection", function connection(ws) {
 
   //ON Connection parse all requests & cookies
   app.use(express.json());
@@ -20,7 +20,7 @@ wss.on("connection", function connection(ws) {
       header: null,
       cookies: null,
       body: null,
-      type:null,
+      type: null,
       originalUrl: null
     };
 
