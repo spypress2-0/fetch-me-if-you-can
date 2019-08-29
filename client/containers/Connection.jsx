@@ -21,6 +21,31 @@ const handleClick = (event, props, view) => {
   props.setView(view);
 }
 
+const handleView = (props) => {
+  if (props.view === "table") {
+    const infoHolder = [];
+    //Destructure messageArr from this.props;
+    const { messageArr } = props;
+
+    //Loop through each element inside messageArr (which is an object and send it down to child components);
+    messageArr.forEach((el, index) => {
+      //el = data object we pushed in. => send it down into the child component as a property/attribute;
+      infoHolder.push(<Message key={`${el}` + index} info={el} />);
+    })
+    /*
+    We want every new request to be on the top when we render, 
+    therefore we want to reverse the array because otherwise every new request will be on the bottom
+    */
+    infoHolder.reverse();
+    return infoHolder;
+  }
+  else {
+    return (
+      <Analytics />
+    );
+  }
+}
+
 //Created Class component called Connection => THIS IS OUR MAIN CONTAINER TO RENDER;
 class Connection extends Component {
   //Need constructor to send props down into child components;
@@ -41,81 +66,21 @@ class Connection extends Component {
   }
 
   render() {
-    if (this.props.view === "table") {
-      const infoHolder = [];
-      //Destructure messageArr from this.props;
-      const { messageArr } = this.props;
-
-      //Loop through each element inside messageArr (which is an object and send it down to child components);
-      messageArr.forEach((el, index) => {
-        //el = data object we pushed in. => send it down into the child component as a property/attribute;
-        infoHolder.push(<Message key={`${el}` + index} info={el} />);
-      })
-      /*
-      We want every new request to be on the top when we render, 
-      therefore we want to reverse the array because otherwise every new request will be on the bottom
-      */
-      infoHolder.reverse();
-      return (
-        <div>
-          <img src="../Webp.net-resizeimage.png" />
-          <div id="switch-container">
-            <button onClick={event => handleClick(event, this.props, "table")}>Table View</button>
-            <button onClick={event => handleClick(event, this.props, "analytics")}>Analytics</button>
-          </div>
-          <div id="title-container">
-            <h1 id="title">Fetch Me If You Can</h1>
-            <p id="about">Your favorite live server visualizer</p>
-          </div>
-          {infoHolder}
+    const view = handleView(this.props);
+    return (
+      <div>
+        <img src="../Webp.net-resizeimage.png" />
+        <div id="switch-container">
+          <button onClick={event => handleClick(event, this.props, "table")}>Table View</button>
+          <button onClick={event => handleClick(event, this.props, "analytics")}>Analytics</button>
         </div>
-      );
-    }
-    else if (this.props.view === "analytics") {
-      return (
-        <div>
-          <img src="../Webp.net-resizeimage.png" />
-          <div id="switch-container">
-            <button onClick={event => handleClick(event, this.props, "table")}>Table View</button>
-            <button onClick={event => handleClick(event, this.props, "analytics")}>Analytics</button>
-          </div>
-          <div id="title-container">
-            <h1 id="title">Fetch Me If You Can</h1>
-            <p id="about">Your favorite live server visualizer</p>
-          </div>
-          <Analytics />
+        <div id="title-container">
+          <h1 id="title">Fetch Me If You Can</h1>
+          <p id="about">Your favorite live server visualizer</p>
         </div>
-      );
-    }
-    // const infoHolder = [];
-    // //Destructure messageArr from this.props;
-    // const { messageArr } = this.props;
-
-    // //Loop through each element inside messageArr (which is an object and send it down to child components);
-    // messageArr.forEach((el, index) => {
-    //   //el = data object we pushed in. => send it down into the child component as a property/attribute;
-    //   infoHolder.push(<Message key={`${el}` + index} info={el} />);
-    // })
-    // /*
-    // We want every new request to be on the top when we render, 
-    // therefore we want to reverse the array because otherwise every new request will be on the bottom
-    // */
-    // infoHolder.reverse();
-    // return (
-    //   <div>
-    //     <img src="../Webp.net-resizeimage.png" />
-    //     <div id="switch-container">
-    //       <button onClick={event = () => setView(event, "table")}>Table View</button>
-    //       <button onClick={event = () => setView(event, "table")}>Analytics</button>
-    //     </div>
-    //     <div id="title-container">
-    //       <h1 id="title">Fetch Me If You Can</h1>
-    //       <p id="about">Your favorite live server visualizer</p>
-    //     </div>
-    //     {/* {view} */}
-    //     {infoHolder}
-    //   </div>
-    // );
+        {view}
+      </div>
+    );
   }
 }
 
