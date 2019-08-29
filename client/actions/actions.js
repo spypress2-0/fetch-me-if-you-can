@@ -15,3 +15,8 @@ export const addMessage = message => ({
   type: types.ADD_MESSAGE,
   payload: message // Data OBJECT we sent from the server;
 });
+
+export const setView = view => ({
+  type: types.SET_VIEW,
+  payload: view
+})
