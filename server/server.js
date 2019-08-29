@@ -43,7 +43,7 @@ wss.on("connection", function connection(ws) {
 app.use('/build', express.static(path.join(__dirname, '../build')))
 
 app.get('/prod', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/index.html'));
+  res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
 })
 
 app.listen(3000, () => {
