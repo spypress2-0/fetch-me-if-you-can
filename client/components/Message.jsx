@@ -1,4 +1,5 @@
 import React from "react";
+import TableHead from './TableHead.jsx';
 
 /*
   Now each data we have access to inside this component is very unpleasing to the eye;
@@ -27,7 +28,6 @@ import React from "react";
 */
 
 const Message = props => {
-  console.log(props);
   /*
     We need to grab what we need:
       We care about content.length, we care about 
@@ -87,21 +87,16 @@ const Message = props => {
     This container is divided into 4 parts (Method-Types, Headers, Body, Cookies);
   */
   return (
-    <table>
-      <tr>
-        <th>Request Type</th>
-        <th>Payload Size<br />(in Bytes)</th>
-        <th>Original URL</th>
-        <th>Response Status</th>
-        <th>Response Message</th>
-      </tr>
-      <tr>
-        <td>{newRow.requestType}</td>
-        <td>{newRow.contentLength}</td>
-        <td>{newRow.originalUrl}</td>
-        <td>{Math.floor(Math.random() * (500 - 200) + 200)}</td>
-        <td></td>
-      </tr>
+    <table className="ui celled table">
+      <tbody>
+        <tr>
+          <td>{newRow.requestType}</td>
+          <td>{newRow.contentLength}</td>
+          <td>{newRow.originalUrl}</td>
+          <td>{Math.floor(Math.random() * (500 - 200) + 200)}</td>
+          <td></td>
+        </tr>
+      </tbody>
     </table>
   );
 };

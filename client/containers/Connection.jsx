@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux"; //Will need to use mapStateToProps & mapDispatchToProps
 import * as actions from "../actions/actions"; //Get all actions from actions folder;
 import Message from "../components/Message.jsx"; //import child component (Message);
-
+import TableHead from "../components/TableHead.jsx";
 //Grab messageArray from state for props to use;
 const mapStateToProps = store => ({
   messageArr: store.messageArray
@@ -49,7 +49,12 @@ class Connection extends Component {
     */
     infoHolder.reverse();
     //then return it to render;
-    return infoHolder;
+    return (
+      <div>
+        <TableHead />
+        {infoHolder}
+      </div>
+    )
   }
 }
 
