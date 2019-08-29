@@ -29,17 +29,20 @@ import React from "react";
 const Message = props => {
   //HEADER
   const headArr = []; //Initalize empty array to render
-  const hKArr = Object.keys(props.info.header); // Keys of Header
-  const hVArr = Object.values(props.info.header); // Values of Header
-
+  const headerKeysArr = Object.keys(props.info.header); // Keys of Header
+  const headerValuesArr = Object.values(props.info.header); // Values of Header
   //loop through each key;
-  hKArr.forEach((key, index) => {
+  headerKeysArr.forEach((key, index) => {
     //push into initialize empty array a P TAG that seperates keys and values into a sentence w/ unique keys;
-    headArr.push(<p key={`${key}` + index} className="header-data">{key} = {hVArr[index]}</p>);
+    headArr.push(
+      <p key={`${key}` + index} className="header-data">
+        {key} = {headerValuesArr[index]}
+      </p>
+    );
   });
 
   //BODY
-  //Need to parse through due to nested objects and arrays inside body object.
+  // Need to parse through due to nested objects and arrays inside body object.
   const flattenObject = object => {
     return Object.assign( {}, ...function _flatten( objectBit, path = '' ) {  
       return [].concat(                                                       
@@ -50,21 +53,23 @@ const Message = props => {
       )
     }( object ) );
   };
+  
+
 
   const bodyArr = [];
   const newObj = flattenObject(props.info.body);
-  const bKArr = Object.keys(newObj);
-  const bVArr = Object.values(newObj);
+  const bodyKeysArr = Object.keys(newObj);
+  const bodyValuesArr = Object.values(newObj);
 
-  bKArr.forEach((key, index) => {
-    bodyArr.push(<p key={`${key}` + index} className="body-data">{key} = {bVArr[index]}</p>);
+  bodyKeysArr.forEach((key, index) => {
+    bodyArr.push(<p key={`${key}` + index} className="body-data">{key} = {bodyValuesArr[index]}</p>);
   })
   //COOKIES
   const cookieArr = [];
-  const cKArr = Object.keys(props.info.cookies);
-  const cVArr = Object.values(props.info.cookies);
-  cKArr.forEach((key, index) => {
-    cookieArr.push(<p key={`${key}` + index} className="cookie-data">Name: {key} | Value: {cVArr[index]}</p>);
+  const cookieKeysArr = Object.keys(props.info.cookies);
+  const cookieValuesArr = Object.values(props.info.cookies);
+  cookieKeysArr.forEach((key, index) => {
+    cookieArr.push(<p key={`${key}` + index} className="cookie-data">Name: {key} | Value: {cookieValuesArr[index]}</p>);
   });
 
   /*

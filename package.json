@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/Spypress/Spypress.git"
   },
-  "author": "Mark Shin, Anthony Toreson, Ruth, Michelle Herrera",
+  "author": "Natalie, Natia, Paul, Xaria",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
