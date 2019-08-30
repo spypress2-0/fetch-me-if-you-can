@@ -18,11 +18,11 @@ class Analytics extends Component {
         const myLineChart = new Chart(ctx, {
             type: 'pie',
             data: {
-                labels: ["404", "200", "500", "300"],
+                labels: ["200", "404"],
                 datasets: [{
                     label: "Population (millions)",
-                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9"],
-                    data: [2478, 5267, 734, 784]
+                    backgroundColor: ["#65d665", "#ff7a7a"],
+                    data: [2, 1]
                 }]
             },
             options: {
